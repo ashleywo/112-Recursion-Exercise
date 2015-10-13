@@ -2,7 +2,6 @@
     "meta": {
         "author": "",
         "email": "",
-
         "title": "Sierpinski Triangle",
         "description": "Fill me in.",
         "id": "answerid-stl",
@@ -11,7 +10,7 @@
         "mainFile": "main.js",
         "instrFile": "instr.html",
         "constructorName": "main",
-        "menuDisplayName": "Change Me!",
+        "menuDisplayName": "Sierpinski Triangle",
         "requires": {
         }
     }
