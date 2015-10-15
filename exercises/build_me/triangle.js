@@ -27,8 +27,32 @@ var main = function(ex) {
             ex.graphics.ctx.lineTo(x + size/2, (y-size*(Math.pow(3, 0.5))/2));
             ex.graphics.ctx.lineTo(x, y);
             ex.graphics.ctx.stroke();
+            ex.graphics.ctx.fill();
         }
         return t;
+    }
+
+    function drawSierpinsky(x, y, size, level) {
+        if (level == 0)
+        {
+            var t = triangle(x, y, size);
+            t.draw();
+        }
+        else {
+            drawSierpinsky(x, y, size/2, level-1);
+            drawSierpinsky(x+size/2, y, size/2, level-1);
+            drawSierpinsky(x+size/4, y-size*(Math.pow(3, 0.5))/4, size/2, level-1);
+        }
+    }
+
+    function sierpinskyTriangle(x, y, size, level) {
+        var sT = {};
+        sT.draw = function() {
+            console.log(x, y, size, level);
+            drawSierpinsky(x, y, size, level);
+        }
+        return sT;
+
     }
 
     /**
@@ -36,10 +60,8 @@ var main = function(ex) {
      */
     var generateContent = function () {
         var content = {};
-        var l1 = Line(10, 10, 50, 50);
-        l1.draw();
-        var t1 = triangle(100, 100, 100);
-        t1.draw();
+        var sT1 = sierpinskyTriangle(200, 500, 500, 3);
+        sT1.draw();
         return content;
     };
 
@@ -51,7 +73,7 @@ var main = function(ex) {
      * @returns {number} floating point from 0 to 1
      */
     var grade = function (content,state) {
-        return 1.0;
+        return 1.0; 
     };
 
     //A good place to start is the kitchen sink
