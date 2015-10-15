@@ -47,7 +47,7 @@
 	var line = Line();
 	line.draw();
 
-	function createCode(optionIndex, saved) {
+	function createCode(saved) {
 		var x = ex.width() - 400;
 		var y = 10;
 		var w = ex.width() / 2 - 10;
@@ -130,10 +130,10 @@
 		//	}
 		//}
 
-		function submitted () {
-			ex.data.save.submit = true;
-			submit();
-		}
+		//function submitted () {
+		//	ex.data.save.submit = true;
+		//	submit();
+		//}
 
 		//function submit () {
 		//	dropdownAnswer();
@@ -147,13 +147,21 @@
 		//	}
 		//}
 
+		function reset () {
+			ex.data.save.saved = false;
+			ex.data.save.order = ["","",""];
+			unload();
+		}
+
 		function unload () {
 			if (ex.data.save.saved == false) {
-				createCode(ex.data.save.index, ex.data.save.saved);
+			// took out ex.data.save.index
+				createCode(ex.data.save.saved);
 				ex.data.save.saved = true;
 			}
 			else {
-				createCode(ex.data.save.index, ex.data.save.saved);
+				// took out ex.data.save.index
+				createCode(ex.data.save.saved);
 				//if (ex.data.save.submit == true) {
 					//submit();
 				}
