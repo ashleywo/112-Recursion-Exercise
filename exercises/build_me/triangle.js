@@ -7,6 +7,8 @@ var main = function(ex) {
     console.log(ex.data.meta.mode);
 
     ex.graphics.ctx.fillStyle = "black";
+    var count = 0;
+    var lastClicked = -1;
 
     function Line(x1, y1, x2, y2) {
         var l = {};
@@ -19,8 +21,13 @@ var main = function(ex) {
     }
 
     //(x, y) is the lower-left corner of the triangle
-    function triangle(x, y, size) {
+    function triangle(x, y, size, ct) {
         var t = {};
+        t.top = y - size;
+        t.bottom = y;
+        t.left = x;
+        t.right = x + size;
+        t.ct = ct;
         t.draw = function () {
             ex.graphics.ctx.moveTo(x, y);
             ex.graphics.ctx.lineTo(x + size, y);
@@ -28,15 +35,42 @@ var main = function(ex) {
             ex.graphics.ctx.lineTo(x, y);
             ex.graphics.ctx.stroke();
             ex.graphics.ctx.fill();
-        }
+        };
+        t.clicked = function (x, y) {
+            if (x > t.left && x < t.right && y > t.top && y  < t.bottom) {
+                return t.ct;
+            } else {
+                return -1;
+            }
+        };
+
+        var clicke = {};
+        t.clicke = clicke;
+        clicke.mouseLastX = 0;
+        clicke.mouseLastY = 0;
+
+        clicke.mousedown = function(event) {
+            var x = event.offsetX;
+            var y = event.offsetY;
+            if (t.clicked(x,y) != -1) {
+                lastClicked = t.clicked(x,y);
+                clicke.mouseLastX = x;
+                clicke.mouseLastY = y;
+                alert(lastClicked);
+            }
+        };
+
+        ex.graphics.on("mousedown",clicke.mousedown);
         return t;
     }
 
     function drawSierpinsky(x, y, size, level) {
         if (level == 0)
         {
-            var t = triangle(x, y, size);
-            t.draw();
+            ex.data.triangles[count] = triangle(x, y, size, count);
+            ex.data.triangles[count].draw();
+            // ex.graphics.ctx.fillText(count, x - 20, y+10);
+            count++;
         }
         else {
             drawSierpinsky(x, y, size/2, level-1);
@@ -48,7 +82,7 @@ var main = function(ex) {
     function sierpinskyTriangle(x, y, size, level) {
         var sT = {};
         sT.draw = function() {
-            console.log(x, y, size, level);
+            ex.data.triangles = {};
             drawSierpinsky(x, y, size, level);
         }
         return sT;
