@@ -107,7 +107,9 @@
 		//			});
 		//	}
 			paragraphText = "Which triangle is drawn first?";
-			p1 = ex.createParagraph(ex.width() - 320, 110, paragraphText, {size: "large"});
+			//p1 = ex.createParagraph(ex.width() - 320, 110, paragraphText, {size: "large"});
+			ex.graphics.ctx.font = "24px Arial Bold";
+			ex.graphics.ctx.fillText(paragraphText, ex.width() - 350, 130);
 		}
 
 		//function dropdownAnswer() {
@@ -150,6 +152,7 @@
 		function reset () {
 			ex.data.save.saved = false;
 			ex.data.save.order = ["","",""];
+			ex.graphics.ctx.clearRect(0,0,ex.width(),ex.height());
 			unload();
 		}
 
