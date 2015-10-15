@@ -72,76 +72,76 @@
 						"\n" + ex.data.code.display[rand3];
 		}
 		codeWell = ex.createCode(x, y, codeOrder, {width: w + "px", size: "small"};
-		if (saved == false) {
-			option1 = ex.data.answer.options[0];
-			option2 = ex.data.answer.options[1];
-			option3 = ex.data.answer.options[2];
-			drop = ex.createDropdown(ex.width() - 250, ex.height() - 325, option1,
-					{color: "dark-blue", elements: {
-											"1" : function () {},
-											"2" : function () {},
-											"3" : function () {}
-											}
-					});
-			}
-		else {
-			if (optionIndex == "0") {
-				option = "1";
-			}
-			else if (optionIndex == "1") {
-				option = "2";
-			}
-			else {
-				option = "3";
-			}
-			drop = ex.createDropdown(ex.width() - 250, ex.height() - 325, option,
-					{color: "dark-blue", elements: {
-											"1" : function () {},
-											"2" : function () {},
-											"3" : function () {}
-										}
-					});
-			}
+		//if (saved == false) {
+			//option1 = ex.data.answer.options[0];
+			//option2 = ex.data.answer.options[1];
+			//option3 = ex.data.answer.options[2];
+			//drop = ex.createDropdown(ex.width() - 250, ex.height() - 325, option1,
+			//		{color: "dark-blue", elements: {
+			//								"1" : function () {},
+			//								"2" : function () {},
+			//								"3" : function () {}
+			//								}
+			//		});
+			//}
+		//else {
+		//	if (optionIndex == "0") {
+		//		option = "1";
+		//	}
+		//	else if (optionIndex == "1") {
+		//		option = "2";
+		//	}
+		//	else {
+		//		option = "3";
+		//	}
+		//	drop = ex.createDropdown(ex.width() - 250, ex.height() - 325, option,
+		//			{color: "dark-blue", elements: {
+		//									"1" : function () {},
+		//									"2" : function () {},
+		//									"3" : function () {}
+		//								}
+		//			});
+		//	}
 			paragraphText = "Which triangle is drawn first?";
 			p1 = ex.createParagraph(ex.width() - 400, 100, paragraphText, {size: "large"});
 		}
 
-		function dropdownAnswer() {
-			if (codeDrop.text() == "<button class=\"btn dropdown-toggle btn-default " +
-									"dropdown-inline\" data-toggle=\"dropdown\">1<span " +
-									"class=\"caret\"></span></button><ul class=\"dropdown" +
-									"-inline\"><li><a>1</a></li><li><a>2</a></li><li><a>3" +
-									"</a></li></ul>") {
-				ex.data.save.index = "0";
-			}
-			else if (codeDrop.text() = "<button class=\"btn dropdown-toggle btn-default " +
-									"dropdown-inline\" data-toggle=\"dropdown\">2<span " +
-									"class=\"caret\"></span></button><ul class=\"dropdown" +
-									"-inline\"><li><a>1</a></li><li><a>2</a></li><li><a>3" +
-									"</a></li></ul>") {
-				ex.data.save.index = "1";
-			}
-			else {
-				ex.data.save.index = "2";
-			}
-		}
+		//function dropdownAnswer() {
+		//	if (codeDrop.text() == "<button class=\"btn dropdown-toggle btn-default " +
+		//							"dropdown-inline\" data-toggle=\"dropdown\">1<span " +
+		//							"class=\"caret\"></span></button><ul class=\"dropdown" +
+		//							"-inline\"><li><a>1</a></li><li><a>2</a></li><li><a>3" +
+		//							"</a></li></ul>") {
+		//		ex.data.save.index = "0";
+		//	}
+		//	else if (codeDrop.text() = "<button class=\"btn dropdown-toggle btn-default " +
+		//							"dropdown-inline\" data-toggle=\"dropdown\">2<span " +
+		//							"class=\"caret\"></span></button><ul class=\"dropdown" +
+		//							"-inline\"><li><a>1</a></li><li><a>2</a></li><li><a>3" +
+		//							"</a></li></ul>") {
+		//		ex.data.save.index = "1";
+		//	}
+		//	else {
+		//		ex.data.save.index = "2";
+		//	}
+		//}
 
 		function submitted () {
 			ex.data.save.submit = true;
 			submit();
 		}
 
-		function submit () {
-			dropdownAnswer();
-			if (ex.data.save.index == ex.data.answer.correctIndex) {
-				ex.showFeedback("Correct!");
-				codeDrop.disable();
-			}
-			else {
-				ex.showFeedback("Incorrect!");
-				codeDrop.disable();
-			}
-		}
+		//function submit () {
+		//	dropdownAnswer();
+		//	if (ex.data.save.index == ex.data.answer.correctIndex) {
+		//		ex.showFeedback("Correct!");
+		//		codeDrop.disable();
+		//	}
+		//	else {
+		//		ex.showFeedback("Incorrect!");
+		//		codeDrop.disable();
+		//	}
+		//}
 
 		function unload () {
 			if (ex.data.save.saved == false) {
@@ -157,5 +157,5 @@
 		}
 
 		unload();
-		ex.chromeElements.submitButton.on("click", function () {submitted()});
+		//ex.chromeElements.submitButton.on("click", function () {submitted()});
 };
