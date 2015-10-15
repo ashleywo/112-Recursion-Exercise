@@ -220,7 +220,11 @@ var main = function(ex) {
                 lastClicked = t.clicked(x,y);
                 clicke.mouseLastX = x;
                 clicke.mouseLastY = y;
-                alert(lastClicked);
+                // alert(lastClicked);
+                if (lastClicked == 0)
+                {
+                    ex.showFeedback("Correct!");
+                }
             }
         };
 
