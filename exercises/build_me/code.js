@@ -108,8 +108,8 @@
 		//	}
 			paragraphText = "Which triangle is drawn first?";
 			//p1 = ex.createParagraph(ex.width() - 320, 110, paragraphText, {size: "large"});
-			ex.graphics.ctx.font = "24px Arial Bold";
-			ex.graphics.ctx.fillText(paragraphText, ex.width() - 350, 130);
+			ex.graphics.ctx.font = "24px Comic Sans MS";
+			ex.graphics.ctx.fillText(paragraphText, ex.width() - 375, 130);
 		}
 
 		//function dropdownAnswer() {
