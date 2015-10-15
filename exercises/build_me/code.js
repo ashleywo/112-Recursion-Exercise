@@ -31,10 +31,14 @@
 		l.x1 = ex.width() - 420;
 		l.y1 = 0;
 		l.x2 = l.x1;
-		l.y2 = ex.height();
+		l.y2 = ex.height() / 2 - 75;
+		l.x3 = ex.width();
+		l.y3 = l.y2;
 		l.draw = function () {
 					ex.graphics.ctx.moveTo(l.x1,l.y1);
 					ex.graphics.ctx.lineTo(l.x2,l.y2);
+					ex.graphics.ctx.moveTo(l.x2,l.y2);
+					ex.graphics.ctx.lineTo(l.x3,l.y3);
 					ex.graphics.ctx.stroke();
 		};
 		return l;
@@ -103,7 +107,7 @@
 		//			});
 		//	}
 			paragraphText = "Which triangle is drawn first?";
-			p1 = ex.createParagraph(ex.width() - 400, 100, paragraphText, {size: "large"});
+			p1 = ex.createParagraph(ex.width() - 320, 110, paragraphText, {size: "large"});
 		}
 
 		//function dropdownAnswer() {
@@ -150,8 +154,8 @@
 			}
 			else {
 				createCode(ex.data.save.index, ex.data.save.saved);
-				if (ex.data.save.submit == true) {
-					submit();
+				//if (ex.data.save.submit == true) {
+					//submit();
 				}
 			}
 		}
