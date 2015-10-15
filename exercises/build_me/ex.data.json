@@ -13,5 +13,21 @@
         "menuDisplayName": "Sierpinski Triangle",
         "requires": {
         }
-    }
+    },
+	"code": {
+		"lang": "python",
+		"display" : ["drawSierpinskyTriangle(canvas, x, y,size\/2, level-1)",
+					"drawSierpinskyTriangle(canvas, x+size\/2, y, size\/2, level-1)",
+					"drawSierpinskyTriangle(canvas, x+size\/4, y-size*(3**0.5)\/4, size\/2,level-1)"]
+	},
+	"answer" : {
+		"options": ["1","2","3"],
+		"correctIndex": ""
+	},
+	"save": {
+		"index" : "",
+		"saved" : false,
+		"submit" : false,
+		"order" : ["","",""]
+	}
 }
