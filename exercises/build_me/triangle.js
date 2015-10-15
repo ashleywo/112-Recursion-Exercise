@@ -10,20 +10,10 @@ var main = function(ex) {
     var count = 0;
     var lastClicked = -1;
 
-    function Line(x1, y1, x2, y2) {
-        var l = {};
-        l.draw = function () {
-            ex.graphics.ctx.moveTo(x1, y1);
-            ex.graphics.ctx.lineTo(x2, y2);
-            ex.graphics.ctx.stroke();   
-        };
-        return l;
-    }
-
     //(x, y) is the lower-left corner of the triangle
     function triangle(x, y, size, ct) {
         var t = {};
-        t.top = y - size;
+        t.top = y-size*(Math.pow(3, 0.5))/2;
         t.bottom = y;
         t.left = x;
         t.right = x + size;
@@ -94,7 +84,7 @@ var main = function(ex) {
      */
     var generateContent = function () {
         var content = {};
-        var sT1 = sierpinskyTriangle(200, 500, 500, 3);
+        var sT1 = sierpinskyTriangle(200, 500, 500, 4);
         sT1.draw();
         return content;
     };
@@ -109,7 +99,5 @@ var main = function(ex) {
     var grade = function (content,state) {
         return 1.0; 
     };
-
-    //A good place to start is the kitchen sink
 
 };
